@@ -3,7 +3,10 @@ class Solution {
         int count0 = 0;
         int count1 = 0;
         int count2 = 0;
-        for (int i = 0; i < nums.length; i++) {
+        int n = nums.length;
+
+        // #1 find count of 0s, 1s, 2s
+        for (int i = 0; i < n; i++) {
             if (nums[i] == 0) {
                 count0++;
             } else if (nums[i] == 1) {
@@ -13,15 +16,18 @@ class Solution {
             }
         }
 
+        // #2 replace 0s, from 0 <-> count0
         for (int i = 0; i < count0; i++) {
             nums[i] = 0;
         }
 
+        // #3 replace 1s, from count0 <-> count0+count1
         for (int i = count0; i < count0 + count1; i++) {
             nums[i] = 1;
         }
 
-        for (int i = count1 + count0; i < nums.length; i++) {
+        // #3 replace 1s, from count0 <-> count0+count1
+        for (int i = count0 + count1; i < n; i++) {
             nums[i] = 2;
         }
     }
